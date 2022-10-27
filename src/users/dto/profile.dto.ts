@@ -1,12 +1,17 @@
 import { IsPhoneNumber } from 'class-validator';
+import { Users } from '../model/users.model';
 
 export class ProfileDto {
-  id?: string;
+  _id?: string;
 
   @IsPhoneNumber()
   mobileNumber: number;
 
-  address: string;
+  city: string;
+
+  street: string;
 
   imageContent: string;
+
+  users: Users;
 }

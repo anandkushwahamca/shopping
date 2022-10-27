@@ -12,7 +12,7 @@ import { Model } from 'mongoose';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { SignUpDto } from './dto/user.signUp.dto';
-import { Users, UsersDocuments } from './users.model';
+import { Users, UsersDocuments } from './model/users.model';
 import { MESSAGES } from 'src/common/constans/constans';
 import { LoginUserDto } from './dto/user-login.dto';
 import { UsersDTO } from './dto/users.dto';
@@ -30,6 +30,7 @@ export class UsersService {
     const users = await this.usersModel
       .find()
       .select('name username email role')
+      .populate('profile')
       .exec();
     if (users.length) {
       return users;

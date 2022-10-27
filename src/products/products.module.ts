@@ -23,6 +23,7 @@ export class ProductsModule implements NestModule {
       .apply(LoggerMiddleware)
       .forRoutes(
         { path: 'products', method: RequestMethod.GET },
+        { path: 'products/:id', method: RequestMethod.GET },
         { path: 'products', method: RequestMethod.POST },
         { path: 'products/:id', method: RequestMethod.PUT },
         { path: 'products/:id', method: RequestMethod.DELETE },

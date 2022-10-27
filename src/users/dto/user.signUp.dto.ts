@@ -6,6 +6,7 @@ import {
   MaxLength,
 } from 'class-validator';
 import { Role } from '../../common/enum/role.enum';
+import { Profile } from '../model/profile.model';
 
 export class SignUpDto {
   id?: string;
@@ -31,4 +32,6 @@ export class SignUpDto {
   email: string;
 
   role: Role;
+
+  profile?: Profile;
 }

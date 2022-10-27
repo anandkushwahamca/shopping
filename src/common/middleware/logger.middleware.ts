@@ -9,7 +9,7 @@ export class LoggerMiddleware implements NestMiddleware {
     const host = req?.get('host');
     const url = req?.originalUrl;
     const method = req?.method;
-    const date = new Date().toDateString();
+    const date = new Date();
     this.logger.log(protocal + '://' + host + url + ' ' + method + ' ' + date);
     next();
   }
