@@ -1,7 +1,7 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Transform, Type } from 'class-transformer';
 import mongoose, { ObjectId } from 'mongoose';
-import { Role } from 'src/common/enum/role.enum';
+import { Role } from '../../common/enum/role.enum';
 import { Profile, ProfileSchema } from './profile.model';
 
 export type UsersDocuments = Users & Document;
@@ -9,7 +9,7 @@ export type UsersDocuments = Users & Document;
 @Schema()
 export class Users {
   @Transform(({ value }) => value.toString())
-  _id: ObjectId;
+  _id?: ObjectId;
 
   @Prop({ type: String, required: true })
   name: string;
@@ -40,7 +40,7 @@ export class Users {
     },
   })
   @Type(() => Profile)
-  profile: Profile;
+  profile?: Profile;
 }
 
 export const UsersSchema = SchemaFactory.createForClass(Users);

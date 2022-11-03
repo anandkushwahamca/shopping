@@ -8,7 +8,7 @@ import {
   Put,
   UseGuards,
 } from '@nestjs/common';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { Role } from '../common/enum/role.enum';
 import { Roles } from '../common/decorators/roles.decorator';
 import { LoginUserDto } from './dto/user-login.dto';

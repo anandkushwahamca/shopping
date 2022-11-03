@@ -1,18 +1,31 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ProductsService } from './products.service';
 
-describe('ProductsService', () => {
-  let service: ProductsService;
+describe('UsersService', () => {
+  let productsService: ProductsService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [ProductsService],
+      providers: [
+        ProductsService,
+        {
+          provide: ProductsService,
+          useFactory: () => ({
+            find: jest.fn(() => []),
+            findById: jest.fn(() => []),
+            save: jest.fn(() => []),
+            findOne: jest.fn(() => []),
+            findByIdAndUpdate: jest.fn(() => []),
+            remove: jest.fn(() => []),
+          }),
+        },
+      ],
     }).compile();
 
-    service = module.get<ProductsService>(ProductsService);
+    productsService = module.get<ProductsService>(ProductsService);
   });
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
+  it('productsService should be defined', () => {
+    expect(productsService).toBeDefined();
   });
 });
